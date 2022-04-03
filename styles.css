@@ -114,3 +114,10 @@ header {
 .main-temp-sign {
   margin-top: 20px;
 }
+.footer-author-link {
+  text-align: center;
+  font-size: 12px;
+}
+.footer-author-link a {
+  text-decoration: none;
+}

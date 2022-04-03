@@ -134,5 +134,5 @@ const findTempreratureAndCityApi = (e) => {
       temperatureOnUI.innerHTML = `${temperaturefromApi}`;
     });
 };
-// searchBtn.addEventListener("click", findTempreratureAndCityApi);
+// searchBtn.addEventListener("submit", findTempreratureAndCityApi);
 form.addEventListener("submit", findTempreratureAndCityApi);
