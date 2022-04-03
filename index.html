@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho&family=Poppins:wght@200;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/df56ee7c04.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./styles.css" />
+
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <form id="city-form">
+          <input autofocus placeholder="Type City" class="header-select"
+          type="text" / >
+          <input value="Search" type="submit" class="header-btn" />
+          <input
+            value="Current"
+            type="submit"
+            class="header-btn"
+            id="header-curr-btn"
+          />
+        </form>
+      </header>
+      <main>
+        <section class="weather-today">
+          <div class="main-row">
+            <img
+              src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/hail.svg"
+              class="main-img"
+              width="300"
+            />
+            <div>
+              <div class="main-temp-wrapper">
+                <h1 id="temp-value">10</h1>
+                <p class="main-temp-sign">
+                  <span class="main-celcius">°C</span> |
+                  <span class="main-farenheit">°F</span>
+                </p>
+              </div>
+              <h2 class="main-city">Kyiv, Ukraine</h2>
+              <p class="main-date-time">Tuesday 2 April</p>
+              <div class="button-container">
+                <button>Today</button>
+                <button>Tomorrow</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="main-week">
+          <ul>
+            <li>
+              <h5>Mon</h5>
+              <img
+                width="50"
+                src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/clear-day.svg"
+                alt="Good Sunny Weather"
+              />
+              <small>16</small>
+            </li>
+            <li>
+              <h5>Tue</h5>
+              <img
+                width="50"
+                src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/clear-day.svg"
+                alt="Good Sunny Weather"
+              />
+              <small>16</small>
+            </li>
+            <li>
+              <h5>Wed</h5>
+              <img
+                width="50"
+                src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/clear-day.svg"
+                alt="Good Sunny Weather"
+              />
+              <small>16</small>
+            </li>
+            <li>
+              <h5>Thu</h5>
+              <img
+                width="50"
+                src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/clear-day.svg"
+                alt="Good Sunny Weather"
+              />
+              <small>16</small>
+            </li>
+            <li>
+              <h5>Fri</h5>
+              <img
+                width="50"
+                src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/clear-day.svg"
+                alt="Good Sunny Weather"
+              />
+              <small>16</small>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

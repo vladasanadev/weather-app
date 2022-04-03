@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+header {
+  background-color: rgb(48, 48, 48);
+  color: white;
+}
+h1,
+h2,
+p {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+h1 {
+  font-size: 50px;
+  margin: 0;
+}
+ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-image: url("./img//rain-bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+button {
+  padding: 20px 30px;
+  width: 140px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(48, 48, 48);
+  box-shadow: 2px 2px 10px black;
+  margin: 5px;
+}
+button:hoveer {
+  background-color: rgb(83, 110, 189, 06);
+}
+h1 {
+  font-size: 120px;
+}
+li {
+  cursor: pointer;
+}
+header {
+  padding: 8px;
+}
+
+.wrapper {
+  padding-top: 60px;
+  width: 700px;
+  margin: 0 auto;
+  max-width: 100%;
+}
+.header-select {
+  font-weight: 400;
+  background-color: rgb(48, 48, 48);
+  border: none;
+  color: antiquewhite;
+}
+.header-btn {
+  background-color: rgb(218, 171, 101, 0, 7);
+  color: rgb(48, 48, 48);
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.weather-today {
+  flex: 2;
+}
+.main-img {
+  transform: translate(0%, -75px);
+}
+.main-week {
+  background-color: rgb(41, 36, 36, 0.6);
+  color: white;
+  flex: 0.3;
+}
+.main-row {
+  display: flex;
+  flex-direction: row;
+}
+.main-city {
+  padding: 0 0 10px 20px;
+  color: rgb(144, 146, 148);
+  font-size: 20px;
+  text-decoration: underline;
+}
+.main-date-time {
+  color: white;
+  padding: 0 0 30px 20px;
+  font-size: 10px;
+}
+.main-celcius,
+.main-farenheit {
+  cursor: pointer;
+  color: antiq;
+}
+.main-temp-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.main-temp-sign {
+  margin-top: 20px;
+}
