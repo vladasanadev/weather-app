@@ -55,11 +55,8 @@
       <main>
         <section class="weather-today">
           <div class="main-row">
-            <img
-              src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/hail.svg"
-              class="main-img"
-              width="300"
-            />
+            <img src=`http://openweathermap.org/img/wn/02n@2x.png`
+            class="main-img" width="300" id="main-icon" />
             <div>
               <div class="main-temp-wrapper">
                 <h1 id="temp-value">10</h1>
@@ -70,7 +67,10 @@
               </div>
               <h2 class="main-city">Kyiv</h2>
               <p class="main-date-time">Tuesday 2 April</p>
-              <p class="main-humidity-wind">Humidity: 75%, Wind: 3.09</p>
+              <p class="main-humidity-wind">
+                <span id="main-humidity">Humidity: 75% </span
+                ><span id="main-wind">Wind: 3.09Km</span>
+              </p>
 
               <button>Tomorrow</button>
             </div>

@@ -78,12 +78,16 @@ currenttime.innerHTML = formatDate();
 //   console.log(temperaturefromApi);
 // });
 
-//test cool
+//data
 const APIKey = "80374f039ac77c49488d6b98bd64b1ff";
 const temperatureOnUI = document.querySelector("#temp-value");
 let inputCity = document.querySelector(".header-select");
 let cityText = document.querySelector(".main-city");
 let form = document.querySelector("#city-form");
+let humidityElement = document.querySelector("#main-humidity");
+let windElement = document.querySelector("#main-wind");
+let iconElement = document.querySelector("#main-icon");
+
 //ToDo:change this logic to happen when click on btn #header-curr-btn
 const currentBtn = document.querySelector("#header-curr-btn ");
 const showCurrentTemperatureAndCity = (e) => {
@@ -121,7 +125,8 @@ form.addEventListener("submit", (e) => {
 //tempApi
 // const WeatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&units=metric`;
 const searchBtn = document.querySelector(".header-btn");
-const findTempreratureAndCityApi = (e) => {
+const displayTemperature = (e) => {
+  console.log("submit form");
   let cityFromInput = inputCity.value;
   e.preventDefault();
   axios
@@ -129,10 +134,18 @@ const findTempreratureAndCityApi = (e) => {
       `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&units=metric&appid=${APIKey}`
     )
     .then((res) => {
+      console.log(res);
       let temperaturefromApi = Math.round(res.data.main.temp);
       cityText.innerHTML = `${inputCity.value}`;
       temperatureOnUI.innerHTML = `${temperaturefromApi}`;
+      humidityElement.innerHTML = `Humidity: ${res.data.main.humidity}%`;
+      windElement.innerHTML = `Wind: ${res.data.wind.speed}Km`;
+      //iconChange
+      iconElement.setAttribute(
+        src,
+        `http://openweathermap.org/img/wn/${res.data.weather.icon}@2x.png`
+      );
     });
 };
 // searchBtn.addEventListener("submit", findTempreratureAndCityApi);
-form.addEventListener("submit", findTempreratureAndCityApi);
+form.addEventListener("submit", displayTemperature);
