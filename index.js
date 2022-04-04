@@ -93,26 +93,33 @@ let forecastElement = document.querySelector("#forecast");
 
 //add dynamically forecast days
 function displayForecast(arrWeeklyTempFromApi) {
-  let forecast = arrWeeklyTempFromApi;
-  console.log(forecast, "received");
-
+  let forecast = arrWeeklyTempFromApi.data.daily;
+  console.log(arrWeeklyTempFromApi?.data?.daily, "received");
   let forecastHTML = `<ul>`;
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach((el, i) => {
-    forecastHTML =
-      forecastHTML +
-      ` <li>
-              <h5 class="weather-forecast-date">${el}</h5>
+  forecast.forEach((el, i) => {
+    if (i < 5) {
+      forecastHTML =
+        forecastHTML +
+        ` <li>
+              <h5 class="weather-forecast-date">${days[i]}</h5>
               <div>
-                <small class="weather-forecast-max">12°</small>
-                <small class="weather-forecast-min">16°</small>
+                <small class="weather-forecast-max">${Math.round(
+                  el.temp.min
+                )}°</small>
+                <small class="weather-forecast-min">${Math.round(
+                  el.temp.max
+                )}°</small>
               </div>
               <img
                 width="50"
-                src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/clear-day.svg"
+                src=http://openweathermap.org/img/wn/${
+                  el.weather[0].icon
+                }@2x.png
                 alt="Good Sunny Weather"
               />
                </li>`;
+    }
   });
   forecastHTML = forecastHTML + `</ul>`;
   forecastElement.innerHTML = forecastHTML;
@@ -123,10 +130,12 @@ function getWeekForecast(coordinates) {
     .get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${APIKey}&units=metric`
     )
-    .then(displayForecast);
+    .then((res) => {
+      displayForecast(res);
+      console.log(res, "send data");
+    });
 }
 
-// displayForecast();
 //change this logic to happen when click on btn #header-curr-btn
 const currentBtn = document.querySelector("#header-curr-btn ");
 const showCurrentTemperatureAndCity = (e) => {
@@ -163,16 +172,20 @@ form.addEventListener("submit", (e) => {
 //pressing Search btn
 // const WeatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&units=metric`;
 const searchBtn = document.querySelector(".header-btn");
-const displayTemperature = (e) => {
-  let cityFromInput = inputCity.value;
+//wrapper fir display temp
+const getTemperature = (e) => {
   e.preventDefault();
+  displayTemperature(inputCity.value);
+};
+// let cityFromInput = inputCity.value;
+const displayTemperature = (cityFromInput) => {
   axios
     .get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&units=metric&appid=${APIKey}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityFromInput}&units=metric&appid=${APIKey}`
     )
     .then((res) => {
       temperaturefromApi = Math.round(res.data.main.temp);
-      cityText.innerHTML = `${inputCity.value}`;
+      cityText.innerHTML = `${cityFromInput}`;
       temperatureOnUI.innerHTML = `${temperaturefromApi}`;
       humidityElement.innerHTML = `Humidity: ${res.data.main.humidity}%`;
       windElement.innerHTML = `Wind: ${res.data.wind.speed}Km`;
@@ -188,4 +201,5 @@ const displayTemperature = (e) => {
     });
 };
 // searchBtn.addEventListener("submit", findTempreratureAndCityApi);
-form.addEventListener("submit", displayTemperature);
+form.addEventListener("submit", getTemperature);
+displayTemperature("Lviv");
