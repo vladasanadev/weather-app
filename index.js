@@ -23,8 +23,7 @@ const formatDate = () => {
 let currenttime = document.querySelector(".main-date-time");
 currenttime.innerHTML = formatDate();
 
-//celcius transform logic
-
+//celcius/farenheit transformation logic
 let celciusTemp = document.querySelector(".main-celcius");
 let farenheitTemp = document.querySelector(".main-farenheit");
 let currTempValue = document.querySelector("#temp-value");
@@ -47,40 +46,7 @@ const convertCelcius = () => {
 farenheitTemp.addEventListener("click", convertFarenheit);
 celciusTemp.addEventListener("click", convertCelcius);
 
-// if (weather[inputCity]) {
-//   let celciusTemp = Math.round(weather[inputCity].temp);
-//   let humidityValue = weather[inputCity].humidity;
-//   let farenheitTemp = (celciusTemp * 9) / 5 + 32;
-// } else {
-// }
-
-// const buttonSearch = document.querySelector(".header-btn");
-// buttonSearch.addEventListener("click", searchCity);
-
-// const searchCity = () => {
-//   console.log(inputCity, weather["${inputCity}"]);
-//   let temp = weather["${inputCity}"].temp;
-//   let farenheitTemp = (temp * 9) / 5 + 32;
-//   alert(
-//     `It is currently ${temp}°C (${farenheitTemp}°F) in ${inputCity} with a humidity of 80%`
-//   );
-// };
-
-// axios
-//   .get("https://jsonplaceholder.typicode.com/comments/")
-//   .then((res) => console.log(res.data[0].email));
-
-//Task 2
-// const APIKey = "80374f039ac77c49488d6b98bd64b1ff";
-// let city = "Sydney";
-// const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
-
-// axios.get(`${APIUrl}&appid=${APIKey}`).then((res) => {
-//   let temperaturefromApi = Math.round(res.data.main.temp);
-//   console.log(temperaturefromApi);
-// });
-
-//data
+//Data + HTML documents
 const APIKey = "80374f039ac77c49488d6b98bd64b1ff";
 const temperatureOnUI = document.querySelector("#temp-value");
 let inputCity = document.querySelector(".header-select");
@@ -202,4 +168,4 @@ const displayTemperature = (cityFromInput) => {
 };
 // searchBtn.addEventListener("submit", findTempreratureAndCityApi);
 form.addEventListener("submit", getTemperature);
-displayTemperature("Lviv");
+displayTemperature("Lisbon");

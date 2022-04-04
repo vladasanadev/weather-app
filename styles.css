@@ -103,11 +103,11 @@ small {
 .main-date-time {
   color: rgb(144, 146, 148);
   padding: 0 0 5px 10px;
-  font-size: 10px;
+  font-size: 14px;
 }
 .main-humidity-wind {
   color: rgb(144, 146, 148);
-  font-size: 10px;
+  font-size: 14px;
   padding: 0 0 20px 10px;
 }
 .main-celcius,
