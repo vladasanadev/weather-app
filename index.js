@@ -31,12 +31,15 @@ let currTempValue = document.querySelector("#temp-value");
 let temperaturefromApi = 0;
 
 const convertFarenheit = () => {
-  let farenheitTemp = (currTempValue.innerHTML * 9) / 5 + 32;
-  currTempValue.innerHTML = `${farenheitTemp}`;
+  celciusTemp.classList.remove("active");
+  farenheitTemp.classList.add("active");
+  let updatedFarenheitTemp = (currTempValue.innerHTML * 9) / 5 + 32;
+  currTempValue.innerHTML = `${updatedFarenheitTemp}`;
 };
 
 const convertCelcius = () => {
-  console.log(temperaturefromApi, "temperaturefromApi");
+  farenheitTemp.classList.remove("active");
+  celciusTemp.classList.add("active");
   currTempValue.innerHTML = `${temperaturefromApi}`;
 };
 

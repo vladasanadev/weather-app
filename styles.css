@@ -112,6 +112,13 @@ header {
   cursor: pointer;
   color: antiq;
 }
+.active {
+  color: blue;
+}
+.active:hover {
+  color: blue;
+  text-decoration: underline;
+}
 .main-temp-wrapper {
   display: flex;
   flex-direction: row;
