@@ -55,6 +55,9 @@ li {
 header {
   padding: 8px;
 }
+small {
+  font-size: 12px;
+}
 
 .wrapper {
   padding-top: 60px;
@@ -125,6 +128,9 @@ header {
 }
 .main-temp-sign {
   margin-top: 20px;
+}
+.weather-forecast-min {
+  opacity: 0.5;
 }
 .footer-author-link {
   text-align: center;
