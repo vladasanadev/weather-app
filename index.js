@@ -92,18 +92,19 @@ let iconElement = document.querySelector("#main-icon");
 let forecastElement = document.querySelector("#forecast");
 
 //add dynamically forecast days
-const displayForecast = () => {
-  forecastElement.innerHTML = "FORECST";
+function displayForecast(arrWeeklyTempFromApi) {
+  let forecast = arrWeeklyTempFromApi;
+  console.log(forecast, "received");
+
   let forecastHTML = `<ul>`;
-  console.log("displ fore", forecastElement);
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach((el) => {
+  days.forEach((el, i) => {
     forecastHTML =
       forecastHTML +
       ` <li>
               <h5 class="weather-forecast-date">${el}</h5>
               <div>
-                <small class="weather-forecast-max">16°</small>
+                <small class="weather-forecast-max">12°</small>
                 <small class="weather-forecast-min">16°</small>
               </div>
               <img
@@ -113,13 +114,19 @@ const displayForecast = () => {
               />
                </li>`;
   });
-  console.log(forecastHTML);
   forecastHTML = forecastHTML + `</ul>`;
   forecastElement.innerHTML = forecastHTML;
-};
+}
+//getting forecastWeekly from API
+function getWeekForecast(coordinates) {
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${APIKey}&units=metric`
+    )
+    .then(displayForecast);
+}
 
-displayForecast();
-
+// displayForecast();
 //change this logic to happen when click on btn #header-curr-btn
 const currentBtn = document.querySelector("#header-curr-btn ");
 const showCurrentTemperatureAndCity = (e) => {
@@ -176,6 +183,8 @@ const displayTemperature = (e) => {
         `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`
       );
       iconElement.setAttribute("alt", res.data.weather[0].description);
+      //updating weekly forecast
+      getWeekForecast(res.data.coord);
     });
 };
 // searchBtn.addEventListener("submit", findTempreratureAndCityApi);
