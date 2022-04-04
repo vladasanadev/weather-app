@@ -25,25 +25,24 @@ currenttime.innerHTML = formatDate();
 
 //celcius transform logic
 
-// let celciusTemp = document.querySelector(".main-celcius");
-// let farenheitTemp = document.querySelector(".main-farenheit");
-// let currTempValue = document.querySelector("#temp-value");
-// let tempereture = currTempValue.innerHTML;
-// const convertFarenheit = () => {
-//   let farenheitTemp = (tempereture * 9) / 5 + 32;
-//   currTempValue.innerHTML = `${farenheitTemp}`;
-// };
+let celciusTemp = document.querySelector(".main-celcius");
+let farenheitTemp = document.querySelector(".main-farenheit");
+let currTempValue = document.querySelector("#temp-value");
+let temperaturefromApi = 0;
 
-// const convertCelcius = () => {
-//   let farenheitTemp = (tempereture * 9) / 5 + 32;
-//   currTempValue.innerHTML = `${farenheitTemp}`;
-// };
+const convertFarenheit = () => {
+  let farenheitTemp = (currTempValue.innerHTML * 9) / 5 + 32;
+  currTempValue.innerHTML = `${farenheitTemp}`;
+};
 
-//Event Lisners
-// farenheitTemp.addEventListener("click", convertFarenheit);
-// celciusTemp.addEventListener("click", () => {
-//   currTempValue.innerHTML = `10`;
-// });
+const convertCelcius = () => {
+  console.log(temperaturefromApi, "temperaturefromApi");
+  currTempValue.innerHTML = `${temperaturefromApi}`;
+};
+
+//Event Lisners for Farenheit and Celcius
+farenheitTemp.addEventListener("click", convertFarenheit);
+celciusTemp.addEventListener("click", convertCelcius);
 
 // if (weather[inputCity]) {
 //   let celciusTemp = Math.round(weather[inputCity].temp);
@@ -88,7 +87,7 @@ let humidityElement = document.querySelector("#main-humidity");
 let windElement = document.querySelector("#main-wind");
 let iconElement = document.querySelector("#main-icon");
 
-//ToDo:change this logic to happen when click on btn #header-curr-btn
+//change this logic to happen when click on btn #header-curr-btn
 const currentBtn = document.querySelector("#header-curr-btn ");
 const showCurrentTemperatureAndCity = (e) => {
   e.preventDefault();
@@ -122,11 +121,9 @@ form.addEventListener("submit", (e) => {
   cityText.innerHTML = `${inputCity.value}`;
 });
 //pressing Search btn
-//tempApi
 // const WeatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&units=metric`;
 const searchBtn = document.querySelector(".header-btn");
 const displayTemperature = (e) => {
-  console.log("submit form");
   let cityFromInput = inputCity.value;
   e.preventDefault();
   axios
@@ -134,17 +131,18 @@ const displayTemperature = (e) => {
       `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&units=metric&appid=${APIKey}`
     )
     .then((res) => {
-      console.log(res);
-      let temperaturefromApi = Math.round(res.data.main.temp);
+      temperaturefromApi = Math.round(res.data.main.temp);
       cityText.innerHTML = `${inputCity.value}`;
       temperatureOnUI.innerHTML = `${temperaturefromApi}`;
       humidityElement.innerHTML = `Humidity: ${res.data.main.humidity}%`;
       windElement.innerHTML = `Wind: ${res.data.wind.speed}Km`;
       //iconChange
+      console.log(res.data.weather[0].description);
       iconElement.setAttribute(
-        src,
-        `http://openweathermap.org/img/wn/${res.data.weather.icon}@2x.png`
+        "src",
+        `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`
       );
+      iconElement.setAttribute("alt", res.data.weather[0].description);
     });
 };
 // searchBtn.addEventListener("submit", findTempreratureAndCityApi);
