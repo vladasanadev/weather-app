@@ -139,3 +139,6 @@ small {
 .footer-author-link a {
   text-decoration: none;
 }
+.weather-forecast-date {
+  margin: 0;
+}

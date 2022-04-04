@@ -89,6 +89,36 @@ let form = document.querySelector("#city-form");
 let humidityElement = document.querySelector("#main-humidity");
 let windElement = document.querySelector("#main-wind");
 let iconElement = document.querySelector("#main-icon");
+let forecastElement = document.querySelector("#forecast");
+
+//add dynamically forecast days
+const displayForecast = () => {
+  forecastElement.innerHTML = "FORECST";
+  let forecastHTML = `<ul>`;
+  console.log("displ fore", forecastElement);
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach((el) => {
+    forecastHTML =
+      forecastHTML +
+      ` <li>
+              <h5 class="weather-forecast-date">${el}</h5>
+              <div>
+                <small class="weather-forecast-max">16°</small>
+                <small class="weather-forecast-min">16°</small>
+              </div>
+              <img
+                width="50"
+                src="https://bmcdn.nl/assets/weather-icons/v2.1/fill/clear-day.svg"
+                alt="Good Sunny Weather"
+              />
+               </li>`;
+  });
+  console.log(forecastHTML);
+  forecastHTML = forecastHTML + `</ul>`;
+  forecastElement.innerHTML = forecastHTML;
+};
+
+displayForecast();
 
 //change this logic to happen when click on btn #header-curr-btn
 const currentBtn = document.querySelector("#header-curr-btn ");
